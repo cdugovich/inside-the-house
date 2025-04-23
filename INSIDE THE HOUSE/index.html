@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inside the House</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="logo.png" alt="Inside the House" class="site-logo">
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="our-work.html">Our Work</a></li>
+        <li><a href="#">Radar</a></li>
+        <li><a href="#">Inspiration</a></li>
+        <li><a href="#">AI</a></li>
+        <li><a href="#">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    
+
+<section class="hero-video">
+  <div class="video-wrapper">
+    <iframe src="https://player.vimeo.com/video/349934544?autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen
+      title="Microsoft 365 – Teamwork in harmony"
+      id="vimeo-player"
+      style="position:absolute;top:0;left:0;width:100%;height:100%;">
+    </iframe>
+  </div>
+  <div class="slide-caption">
+    <span class="tag">NEW WORK</span>
+    <h3>Teamwork in harmony with Microsoft 365</h3>
+    <p>When your tools work together, your people do too. Our latest campaign shows how Microsoft 365 makes collaboration feel effortless.</p>
+    <a href="#">Watch the spot ></a>
+  </div>
+</section>
+
+
+
+    <section class="our-work reveal">
+      <h2>OUR WORK</h2>
+      <div class="work-grid">
+        <div class="work-card">
+          <div class="work-tile"></div>
+          <div class="tile-caption">
+            <h4>Case Study: Modern Work Campaign</h4>
+            <p>A full-funnel brand campaign repositioning the Microsoft Modern Work portfolio with a more human, emotionally intelligent tone.</p>
+            <a href="#">Learn more ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Submit work · Contact · Last updated April 2025</p>
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) slide.classList.add('active');
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.remove('active');
+        if (i === index) dot.classList.add('active');
+      });
+      currentSlide = index;
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => showSlide(index));
+    });
+
+    setInterval(() => {
+      showSlide((currentSlide + 1) % slides.length);
+    }, 6000);
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+  </script>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+
+  function showSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      if (i === index) slide.classList.add('active');
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.remove('active');
+      if (i === index) dot.classList.add('active');
+    });
+    currentSlide = index;
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => showSlide(index));
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(section => observer.observe(section));
+</script>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+</body>
+</html>
